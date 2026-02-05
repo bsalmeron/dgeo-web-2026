@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, MapPin } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import logoMark from '../../assets/brand/logo-mark.webp';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -62,7 +63,7 @@ const Header = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             <div className="relative">
-              <MapPin className="h-8 w-8 text-orange-400 group-hover:text-orange-300 transition-colors" />
+              <img src={logoMark} alt="D'GEO" className="h-10 w-10 object-contain" />
               <motion.div
                 className="absolute inset-0 bg-orange-400/20 rounded-full"
                 animate={{ scale: [1, 1.2, 1] }}

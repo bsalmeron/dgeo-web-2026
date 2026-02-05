@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { SERVICES, FEATURED_CASES, CLIENTS } from '../lib/constants';
+import heroImg from '../assets/images/dji_0034-1600.jpg';
 
 const Home = () => {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -55,7 +56,10 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-cover bg-center" style={{ backgroundImage: `url(${heroImg})` }}>
+      <div className="absolute inset-0 bg-slate-950/65" />
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/30 via-slate-950/60 to-slate-950" />
+
         <div className="absolute inset-0 bg-gradient-to-br from-orange-600 via-orange-700 to-amber-600 opacity-95"></div>
         <div className="absolute inset-0 bg-[url('/images/hero-pattern.svg')] opacity-10"></div>
 
