@@ -26,6 +26,7 @@ const Header = () => {
     { name: 'Inicio', path: '/', hash: '', scrollTo: null },
     { name: 'Servicios', path: '/', hash: '#servicios', scrollTo: 'servicios-section' },
     { name: 'Proyectos', path: '/', hash: '#proyectos', scrollTo: 'proyectos-section' },
+    { name: 'Galería', path: '/galeria', hash: '', scrollTo: null },
     { name: 'Nosotros', path: '/', hash: '#nosotros', scrollTo: 'nosotros-section' },
     { name: 'Contacto', path: '/contacto', hash: '', scrollTo: null },
   ];

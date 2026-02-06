@@ -14,6 +14,21 @@ import {
 import { supabase } from '../lib/supabase';
 import { SERVICES, FEATURED_CASES, CLIENTS } from '../lib/constants';
 import heroImg from '../assets/images/dji_0034-1600.jpg';
+import g1 from '../assets/images/2d7a5538-800.jpg';
+import g2 from '../assets/images/2d7a7305-800.jpg';
+import g3 from '../assets/images/2d7a5493-800.jpg';
+import g4 from '../assets/images/office-geo-modeling.png';
+import g5 from '../assets/images/lab-sample.png';
+
+import iconWaveOrange from '../assets/icons/Logo_DGEO-04.png';
+import iconHelmet from '../assets/icons/Logo_DGEO-06.png';
+import iconCamera from '../assets/icons/Logo_DGEO-07.png';
+import iconDrone from '../assets/icons/Logo_DGEO-08.png';
+import iconSoil from '../assets/icons/Logo_DGEO-09.png';
+import iconLab from '../assets/icons/Logo_DGEO-10.png';
+import iconSurvey from '../assets/icons/Logo_DGEO-11.png';
+import iconTerrain from '../assets/icons/Logo_DGEO-12.png';
+import iconMonitoring from '../assets/icons/Logo_DGEO-13.png';
 
 const Home = () => {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -247,6 +262,88 @@ const Home = () => {
               className="inline-flex items-center px-8 py-4 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg transition-all transform hover:scale-105"
             >
               Ver Todos los Casos
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+
+      {/* Gallery Preview Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">
+              Galería de Proyectos
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+              Un vistazo a nuestro trabajo en campo y consultoría.
+            </p>
+
+            {/* Divider + Icon Strip */}
+            <div className="mt-10 mb-10 flex flex-col items-center">
+              <img
+                src={iconWaveOrange}
+                alt=""
+                className="h-7 w-auto opacity-90"
+                aria-hidden="true"
+                loading="lazy"
+              />
+
+              <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-5">
+                {[
+                  { src: iconCamera, label: 'Fotografía técnica' },
+                  { src: iconDrone, label: 'Drones & levantamiento' },
+                  { src: iconHelmet, label: 'Seguridad en obra' },
+                  { src: iconSurvey, label: 'Topografía' },
+                  { src: iconSoil, label: 'Ensayos de suelo' },
+                  { src: iconLab, label: 'Laboratorio' },
+                  { src: iconTerrain, label: 'Modelado del terreno' },
+                  { src: iconMonitoring, label: 'Monitoreo' },
+                ].map((it) => (
+                  <div
+                    key={it.label}
+                    className="flex flex-col items-center gap-2"
+                    title={it.label}
+                  >
+                    <div className="w-14 h-14 rounded-2xl bg-white shadow-sm border border-slate-200 flex items-center justify-center hover:shadow-md transition-shadow">
+                      <img
+                        src={it.src}
+                        alt={it.label}
+                        className="w-9 h-9 object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                    <span className="text-xs text-slate-600 text-center leading-tight max-w-[7rem]">
+                      {it.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+            {[{src: g1, alt: 'Trabajo de campo'}, {src: g2, alt: 'Inspección en sitio'}, {src: g3, alt: 'Equipo en acción'}].map((p, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                className="rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow"
+              >
+                <img src={p.src} alt={p.alt} className="w-full h-64 object-cover" loading="lazy" />
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link
+              to="/galeria"
+              className="inline-flex items-center px-8 py-4 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg transition-all transform hover:scale-105"
+            >
+              Ver Galería Completa
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </div>

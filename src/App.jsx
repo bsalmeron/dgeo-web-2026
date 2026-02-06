@@ -12,6 +12,7 @@ import MonitoreoGeotecnico from './pages/services/monitoreo-geotecnico';
 import CasosExito from './pages/CasosExito';
 import Contacto from './pages/Contacto';
 import Cotizacion from './pages/Cotizacion';
+import Galeria from './pages/Galeria';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/casos-de-exito" element={<CasosExito />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/cotizacion" element={<Cotizacion />} />
+          <Route path="/galeria" element={<Galeria />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </Layout>
