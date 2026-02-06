@@ -1,13 +1,17 @@
-# D'GEO Soluciones — Sitio estático (HTML)
+# D'GEO Soluciones - Sitio estático (HTML)
 
-## Ejecutar local
-Solo abre `index.html` en tu navegador.
+## Deploy en Netlify (sin build)
+Este proyecto es 100% estático (HTML/CSS/JS).
+
+- El repositorio incluye `netlify.toml` con:
+  - `publish = "."`
+  - `command = ""`
+
+Si ya tenías un build configurado en Netlify, cambiá:
+- **Build command**: (vacío)
+- **Publish directory**: `.`
 
 ## Estructura
-- `index.html` Página única con secciones y navegación ancla.
-- `styles.css` Estilos con variables CSS (modo claro por defecto + modo oscuro).
-- `script.js` Toggle claro/oscuro (persistencia en localStorage) + menú móvil.
-
-## Deploy en GitHub Pages
-1. Crea un repo y sube estos archivos.
-2. Settings → Pages → Deploy from a branch → `main` / root.
+- `index.html`: landing principal
+- `blog/`: páginas del blog
+- `assets/`: imágenes y scripts
