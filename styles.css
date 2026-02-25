@@ -3,8 +3,8 @@
    ======================================== */
 :root {
   /* Colores Corporativos - Paleta Real de Imágenes D'GEO */
-  --primary: #FF6B35;
-  --primary-dark: #E55520;
+  --primary: #f7941d;
+  --primary-dark: #f7941d;
   --primary-light: #FF8C42;
   --secondary: #ffffff;
   --accent: #A67C52;
@@ -111,7 +111,7 @@ body {
 }
 
 img {
-  max-width: 100%;
+  max-width: 30%;
   height: auto;
   display: block;
 }
@@ -183,19 +183,12 @@ button {
   transform: scale(1.05);
 }
 
-.logo-circle {
-  width: 55px;
-  height: 55px;
-  border-radius: var(--radius-full);
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-  color: var(--text-inverse);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.25rem;
-  font-weight: var(--font-weight-extrabold);
-  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
-  transition: all var(--transition-base);
+/* Ajuste logo oficial dentro del círculo */
+.logo-circle img{
+  width: 30%;
+  height: auto;
+  max-width: none;
+  display: block;
 }
 
 .logo:hover .logo-circle {
@@ -1631,5 +1624,21 @@ section {
   font-size: 0.95rem;
 }
 
+.btn-whatsapp-float:hover{ transform: translateY(-2px); }
 .list { margin-top: var(--spacing-sm); padding-left: 1.2rem; color: var(--text-muted); }
 .list li { margin: 0.4rem 0; }
+
+/* Botón flotante WhatsApp */
+.btn-whatsapp-float{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+  padding: 12px 16px;
+  border-radius: 9999px;
+  font-weight: 700;
+  box-shadow: 0 10px 25px rgba(0,0,0,.18);
+  background: #25D366;
+  color: #fff;
+  transition: transform .2s ease;
+}
