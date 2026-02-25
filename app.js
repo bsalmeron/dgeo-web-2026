@@ -673,4 +673,20 @@ rippleStyles.textContent = `
 `;
 document.head.appendChild(rippleStyles);
 
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('enableSoundBtn');
+  const iframe = document.getElementById('dgeoVideo');
+  if (!btn || !iframe) return;
+
+  btn.addEventListener('click', () => {
+    const currentSrc = iframe.getAttribute('src') || '';
+    // Quita mute=1 y asegura autoplay=1
+    const newSrc = currentSrc
+      .replace('mute=1', 'mute=0')
+      .includes('autoplay=1') ? currentSrc.replace('mute=1', 'mute=0') : currentSrc.replace('mute=1', 'mute=0') + '&autoplay=1';
+
+    iframe.setAttribute('src', newSrc);
+  });
+});
+
 console.log('D\'GEO JavaScript initialized successfully');
