@@ -673,20 +673,20 @@ rippleStyles.textContent = `
 `;
 document.head.appendChild(rippleStyles);
 
-document.addEventListener('DOMContentLoaded', () => {
-  const btn = document.getElementById('enableSoundBtn');
-  const iframe = document.getElementById('dgeoVideo');
-  if (!btn || !iframe) return;
+ // Activar sonido en la primera interacción del usuario
+document.addEventListener("click", function enableSoundOnce() {
+  const iframe = document.getElementById("dgeoVideo");
+  if (!iframe) return;
 
-  btn.addEventListener('click', () => {
-    const currentSrc = iframe.getAttribute('src') || '';
-    // Quita mute=1 y asegura autoplay=1
-    const newSrc = currentSrc
-      .replace('mute=1', 'mute=0')
-      .includes('autoplay=1') ? currentSrc.replace('mute=1', 'mute=0') : currentSrc.replace('mute=1', 'mute=0') + '&autoplay=1';
+  let src = iframe.src;
 
-    iframe.setAttribute('src', newSrc);
-  });
+  // quitar mute
+  src = src.replace("mute=1", "mute=0");
+
+  iframe.src = src;
+
+  // solo una vez
+  document.removeEventListener("click", enableSoundOnce);
 });
 
 console.log('D\'GEO JavaScript initialized successfully');
