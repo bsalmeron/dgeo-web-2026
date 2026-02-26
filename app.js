@@ -674,19 +674,45 @@ rippleStyles.textContent = `
 document.head.appendChild(rippleStyles);
 
 // ==============================
-// YouTube: activar sonido al primer click usando IFrame API
+// YouTube IFrame API: crear player + activar sonido con gesto válido
 // ==============================
 let dgeoPlayer = null;
-function enableSound() {
-  if (dgeoPlayer && typeof dgeoPlayer.unMute === 'function') {
-    dgeoPlayer.unMute();
-    dgeoPlayer.setVolume(100);
-  }
-  window.removeEventListener('scroll', enableSound);
-  document.removeEventListener('click', enableSound);
+
+function onYouTubeIframeAPIReady() {
+  dgeoPlayer = new YT.Player('dgeoVideo', {
+    events: {
+      onReady: () => {
+        // Player listo
+        console.log('YouTube Player ready');
+      }
+    }
+  });
 }
 
-document.addEventListener('click', enableSound, { once: true });
-window.addEventListener('scroll', enableSound, { once: true });
+// Activar sonido SOLO con gesto válido: click/touch/tecla
+function tryEnableSound() {
+  if (!dgeoPlayer) {
+    console.warn('Player not ready yet');
+    return;
+  }
+
+  try {
+    dgeoPlayer.unMute();
+    dgeoPlayer.setVolume(100);
+    console.log('Sound enabled');
+  } catch (e) {
+    console.warn('Unable to unmute:', e);
+  }
+
+  // remover listeners
+  document.removeEventListener('click', tryEnableSound);
+  document.removeEventListener('touchstart', tryEnableSound);
+  document.removeEventListener('keydown', tryEnableSound);
+}
+
+// Scroll NO es confiable para audio, por eso NO lo usamos
+document.addEventListener('click', tryEnableSound, { once: true });
+document.addEventListener('touchstart', tryEnableSound, { once: true });
+document.addEventListener('keydown', tryEnableSound, { once: true });
 
 console.log('D\'GEO JavaScript initialized successfully');
