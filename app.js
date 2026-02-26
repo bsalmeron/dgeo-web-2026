@@ -673,20 +673,20 @@ rippleStyles.textContent = `
 `;
 document.head.appendChild(rippleStyles);
 
- // Activar sonido en la primera interacción del usuario
-document.addEventListener("click", function enableSoundOnce() {
-  const iframe = document.getElementById("dgeoVideo");
-  if (!iframe) return;
+// ==============================
+// YouTube: activar sonido al primer click usando IFrame API
+// ==============================
+let dgeoPlayer = null;
+function enableSound() {
+  if (dgeoPlayer && typeof dgeoPlayer.unMute === 'function') {
+    dgeoPlayer.unMute();
+    dgeoPlayer.setVolume(100);
+  }
+  window.removeEventListener('scroll', enableSound);
+  document.removeEventListener('click', enableSound);
+}
 
-  let src = iframe.src;
-
-  // quitar mute
-  src = src.replace("mute=1", "mute=0");
-
-  iframe.src = src;
-
-  // solo una vez
-  document.removeEventListener("click", enableSoundOnce);
-});
+document.addEventListener('click', enableSound, { once: true });
+window.addEventListener('scroll', enableSound, { once: true });
 
 console.log('D\'GEO JavaScript initialized successfully');
